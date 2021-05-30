@@ -7,6 +7,7 @@ import logger from 'morgan';
 
 import { router as indexRouter } from './routes/index';
 import usersRouter from './routes/users';
+import authRouter from './routes/auth';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static('public'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => next(createHttpError(404)));
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
