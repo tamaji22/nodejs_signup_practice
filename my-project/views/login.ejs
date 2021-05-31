@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/nav', title) %>
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <header class="card-header card-header-bg-color">
+            <p class="card-header-title">Login</p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">E-Mail Address</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" style="width: 80%" type="email" />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Password</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control">
+                      <input class="input" style="width: 80%" type="password" />
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="has-text-centered">
+                <button class="button is-info mt-3">Login</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
