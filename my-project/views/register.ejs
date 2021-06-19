@@ -7,6 +7,15 @@
   </head>
   <body>
     <%- include('partials/nav', title) %>
+    <div class="container has-text-danger">
+      <% if(errorMessage) { %>
+      <ul>
+        <% for(const n in errorMessage) { %>
+        <li><%= errorMessage[n].msg %></li>
+        <% } %>
+      </ul>
+      <% } %>
+    </div>
     <section class="section">
       <div class="container">
         <div class="card">
@@ -15,57 +24,83 @@
           </header>
           <div class="card-content">
             <div class="content">
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Name</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" style="width: 80%" type="text" />
-                    </p>
+              <form action="/auth/register" method="post">
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Name</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input
+                          class="input"
+                          style="width: 80%"
+                          type="text"
+                          name="userName"
+                          value="<%= userName %>"
+                        />
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">E-Mail Address</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" style="width: 80%" type="email" />
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">E-Mail Address</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input
+                          class="input"
+                          style="width: 80%"
+                          type="email"
+                          name="email"
+                          value="<%= email %>"
+                        />
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Password</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" style="width: 80%" type="password" />
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Password</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input
+                          class="input"
+                          style="width: 80%"
+                          type="password"
+                          name="password"
+                          value="<%= password %>"
+                        />
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                  <label class="label">Confirm Password</label>
-                </div>
-                <div class="field-body">
-                  <div class="field">
-                    <p class="control">
-                      <input class="input" style="width: 80%" type="password" />
-                    </p>
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label">Confirm Password</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input
+                          class="input"
+                          style="width: 80%"
+                          type="password"
+                          name="passwordConfirmation"
+                          value="<%= passwordConfirmation %>"
+                        />
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="has-text-centered">
-                <button class="button is-info mt-3">Register</button>
-              </div>
+                <div class="has-text-centered">
+                  <button class="button is-info mt-3">Register</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
