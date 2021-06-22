@@ -1,11 +1,91 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav class="navbar navbar-border-bottom" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <p class="title"><%= title %></p>
+        </a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="dropdown">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span><%= userName %></span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <div class="card">
+          <header class="card-header card-header-bg-color">
+            <p class="card-header-title">Dashboard</p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>You are logged in!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1. DOMが読み込まれた際に`.dropdown-trigger`のClassを持つHTMLElementを検索
+        const nodeList = document.querySelectorAll('.dropdown-trigger');
+        const elements = Array.prototype.slice.call(nodeList, 0);
+
+        elements.forEach((element) => {
+          // 2. Dropdownの開閉ボタンを取得と、開閉を管理するDropdownのElementを取得
+          const button = element.querySelector('button');
+          const dropdown = element.parentNode;
+
+          // 3. Dropdownの開閉ボタンがクリックされた際に、`is-active`クラスを切り替えイベント追加
+          button.addEventListener('click', () => {
+            dropdown.classList.toggle('is-active');
+          });
+        });
+
+        // Dropdownを閉じる処理
+        // 1. window全体に対して、クリックイベントを登録
+        window.onclick = (event) => {
+          elements.forEach((element) => {
+            const button = element.querySelector('button');
+            const dropdown = element.parentNode;
+
+            // 2. aria-controlsより対象のDropdownのMenuを取得
+            const menu = document.querySelector('#' + button.getAttribute('aria-controls'));
+
+            // 3. 自身のTriggerButtonクリック時はMenuを閉じない
+            if (event.target && element.contains(event.target)) {
+              return;
+            }
+
+            // 4. クリックがDropdownのMenuの範囲外の場合は、Dropdownを閉じる
+            if (event.target && !menu.contains(event.target)) {
+              dropdown.classList.remove('is-active');
+            }
+          });
+        };
+      });
+    </script>
   </body>
 </html>

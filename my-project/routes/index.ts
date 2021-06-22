@@ -1,5 +1,7 @@
-import { Router } from 'express';
+import * as Express from 'express';
 
-export const router = Router();
+export const router = Express.Router();
 
-router.get('/', (req, res, next) => res.render('index', { title: 'Express' }));
+router.get('/', (req: Express.Request, res: Express.Response, next: Express.NextFunction) =>
+  res.render('index', { title: 'Express' })
+);
